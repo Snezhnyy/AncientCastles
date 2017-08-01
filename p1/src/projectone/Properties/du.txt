@@ -1,0 +1,25 @@
+23
+default 100 4 10 40 1 10
+warriorp1 100 5 20 55 1 0
+warriorp2 100 5 20 55 1 1
+archerp1 80 5 5 60 2 0
+archerp2 80 5 5 60 2 1
+elementalWaterp1 100 5 10 55 1 0 wE
+elementalWaterp2 100 5 10 55 1 1 wE
+necrop1 120 4 5 45 3 0 ress
+necrop2 120 4 5 45 3 1 ress
+skeletonp1 0 0 0 0 0 -1
+skeletonp2 0 0 0 0 0 -1
+wispp1 80 7 2 40 2 0 heal
+wispp2 80 7 2 40 2 1 heal
+wolfp1 100 6 15 70 1 0 wolf
+wolfp2 100 6 15 70 1 1 wolf
+golemp1 150 5 30 65 1 0 golem
+golemp2 150 5 30 65 1 1 golem
+stonep1 40 4 10 40 1 0
+stonep2 40 4 10 40 1 1
+catapultp1 65 4 5 90 5 0 catapult
+catapultp2 65 4 5 90 5 1 catapult
+dragonp1 130 7 15 90 1 0 dragon
+dragonp2 130 7 15 90 1 1 dragon
+//0imageName 1HP 2speed 3defence 4attack 5attackRange 6owner
