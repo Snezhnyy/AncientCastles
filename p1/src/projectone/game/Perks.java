@@ -140,4 +140,21 @@ public class Perks {
         uMap[defender.x][defender.y].wolfDamage += heal;
         uMap[attacker.x][attacker.y].canAttack = false;
     }
+    
+    public static void tracingHelperDragonFly(int speed, int x, int y, int[][] moveMap){
+        if(moveMap[x][y] > -1 && moveMap[x][y] + 1 <= speed){
+            if(x + 1 < moveMap.length)
+                if(moveMap[x + 1][y] == -1)
+                    moveMap[x + 1][y] = moveMap[x][y] + 1;
+            if(x - 1 >= 0)
+                if(moveMap[x - 1][y] == -1)
+                    moveMap[x - 1][y] = moveMap[x][y] + 1;
+            if(y + 1 < moveMap[0].length)
+                if(moveMap[x][y + 1] == -1)
+                    moveMap[x][y + 1] = moveMap[x][y] + 1;
+            if(y - 1 >= 0)
+                if(moveMap[x][y - 1] == -1)
+                    moveMap[x][y - 1] = moveMap[x][y] + 1;
+        }
+    }
 }

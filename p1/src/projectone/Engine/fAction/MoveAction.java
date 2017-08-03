@@ -47,7 +47,8 @@ public class MoveAction extends GeneralAction {
             for(int x = 0; x < moveMap.length; x++)
                 for(int y = 0; y < moveMap[0].length; y++)
                     if(ud.isWaterElemental) Perks.tracingHelperMoveWaterElemental(speed, x, y, room, frame, moveMap, activeUnit);
-                    else tracingHelperMove(speed, x, y, room, frame); 
+                    else if(ud.isDragon) Perks.tracingHelperDragonFly(speed, x, y, moveMap);
+                         else tracingHelperMove(speed, x, y, room, frame); 
         }
 
     public void click(Room room, GameJFrame frame, Point cursorTile, MouseEvent e) {
