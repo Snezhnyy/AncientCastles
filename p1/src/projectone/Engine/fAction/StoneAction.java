@@ -51,10 +51,10 @@ public class StoneAction extends GeneralAction{
     public void click(Room room, GameJFrame frame, Point cursorTile, MouseEvent e) {
         if(selected){
             stoneAction(cursorTile, room, frame);
-           if(!activeUnit.canAttack) frame.action = new ChooseAction();
+           if(!activeUnit.canAttack) macOn(cursorTile, room, frame, e);
            if(attackMap[cursorTile.x][cursorTile.y] < 1) 
                macOn(cursorTile, room, frame, e);
-           else frame.action = new ChooseAction();
+           else macOn(cursorTile, room, frame, e);
         }
     }
     private void stoneAction(Point cursorTile, Room room, GameJFrame frame) {
@@ -62,7 +62,10 @@ public class StoneAction extends GeneralAction{
             if(room.map.ground[cursorTile.x][cursorTile.y] == 25) {
                 room.map.ground[cursorTile.x][cursorTile.y] = 1;
             }
-            else room.units[cursorTile.x][cursorTile.y] = new UnitDescription(frame.units[17 + activeUnit.owner].ud);
+            else {
+                room.units[cursorTile.x][cursorTile.y] = new UnitDescription(frame.units[17 + activeUnit.owner].ud);
+                room.units[cursorTile.x][cursorTile.y].canAttack = false;
+            }
             activeUnit.canAttack = false;
         }
     }
