@@ -30,7 +30,7 @@ public class UnitDescription implements Serializable{
     public int imageId;
     public int owner;
     public int wolfDamage;
-    public boolean canMove, canAttack, isWaterElemental, isRess, isHeal, isWolf, isGolem, isCatapult, isDragon;
+    public boolean canMove, canAttack, isWaterElemental, isRess, isHeal, isWolf, isGolem, isCatapult, isDragon, shield;
     
     public UnitDescription(){
         hp = 100;
@@ -51,6 +51,7 @@ public class UnitDescription implements Serializable{
         isGolem = false;
         isCatapult = false;
         isDragon = false;
+        shield = false;
         wolfDamage = 0;
     }
     public UnitDescription(UnitDescription u){
@@ -72,6 +73,7 @@ public class UnitDescription implements Serializable{
         isGolem = u.isGolem;
         isCatapult = u.isCatapult;
         isDragon = u.isDragon;
+        shield = u.shield;
         wolfDamage = u.wolfDamage;
     }
     public UnitDescription(String description){
@@ -104,6 +106,8 @@ public class UnitDescription implements Serializable{
                     case "catapult": isCatapult = true;
                         break;
                     case "dragon": isDragon = true;
+                        break;
+                    case "shield": shield = true;
                         break;
                     default :break;
                 }

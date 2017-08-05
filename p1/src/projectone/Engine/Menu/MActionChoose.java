@@ -15,8 +15,10 @@ import projectone.Engine.GameJFrame;
 import projectone.Engine.fAction.AttackAction;
 import projectone.Engine.fAction.ChooseAction;
 import projectone.Engine.fAction.HealAction;
+import projectone.Engine.fAction.HealActionDragon;
 import projectone.Engine.fAction.MoveAction;
 import projectone.Engine.fAction.RessurectAction;
+import projectone.Engine.fAction.ShieldAction;
 import projectone.Engine.fAction.StoneAction;
 import projectone.game.Perks;
 import projectone.game.Room;
@@ -63,6 +65,20 @@ public class MActionChoose extends MMenuContainer {
             mb[2] = new MButton(new ImageIcon("src" + File.separator + "projectone" + File.separator + "Image"+ File.separator +"Menu"+ File.separator +"Buttons" + File.separator +"64x64xstone.png").getImage(), new Point(176, 16), new Dimension(64, 64));
             activeMenu = new MMenu(mb, new ImageIcon("src" + File.separator + "projectone" + File.separator + "Image"+ File.separator +"Menu"+ File.separator +"Backgrounds" + File.separator +"256x96xaction.png").getImage(), new Point(50, 50), new Dimension(256, 96));
         }
+         if(ud.isDragon){
+             MButton[] mb = new MButton[3];
+            mb[0] = new MButton(new ImageIcon("src" + File.separator + "projectone" + File.separator + "Image"+ File.separator +"Menu"+ File.separator +"Buttons" + File.separator +"64x64xmove.png").getImage(), new Point(16, 16), new Dimension(64, 64));
+            mb[1] = new MButton(new ImageIcon("src" + File.separator + "projectone" + File.separator + "Image"+ File.separator +"Menu"+ File.separator +"Buttons" + File.separator +"64x64xattack.png").getImage(), new Point(96, 16), new Dimension(64, 64));
+            mb[2] = new MButton(new ImageIcon("src" + File.separator + "projectone" + File.separator + "Image"+ File.separator +"Menu"+ File.separator +"Buttons" + File.separator +"64x64xeat.png").getImage(), new Point(176, 16), new Dimension(64, 64));
+            activeMenu = new MMenu(mb, new ImageIcon("src" + File.separator + "projectone" + File.separator + "Image"+ File.separator +"Menu"+ File.separator +"Backgrounds" + File.separator +"256x96xaction.png").getImage(), new Point(50, 50), new Dimension(256, 96));
+        }
+        if(ud.shield){
+             MButton[] mb = new MButton[3];
+            mb[0] = new MButton(new ImageIcon("src" + File.separator + "projectone" + File.separator + "Image"+ File.separator +"Menu"+ File.separator +"Buttons" + File.separator +"64x64xmove.png").getImage(), new Point(16, 16), new Dimension(64, 64));
+            mb[1] = new MButton(new ImageIcon("src" + File.separator + "projectone" + File.separator + "Image"+ File.separator +"Menu"+ File.separator +"Buttons" + File.separator +"64x64xattack.png").getImage(), new Point(96, 16), new Dimension(64, 64));
+            mb[2] = new MButton(new ImageIcon("src" + File.separator + "projectone" + File.separator + "Image"+ File.separator +"Menu"+ File.separator +"Buttons" + File.separator +"64x64xshield.png").getImage(), new Point(176, 16), new Dimension(64, 64));
+            activeMenu = new MMenu(mb, new ImageIcon("src" + File.separator + "projectone" + File.separator + "Image"+ File.separator +"Menu"+ File.separator +"Backgrounds" + File.separator +"256x96xaction.png").getImage(), new Point(50, 50), new Dimension(256, 96));
+        }
     }
     
     public void click(MouseEvent e){
@@ -100,6 +116,12 @@ public class MActionChoose extends MMenuContainer {
                         }
                         if(activeUnit.isGolem){
                             frame.action = new StoneAction(room, frame, cursorTile, activeUnit, position);
+                        }
+                        if(activeUnit.isDragon){
+                           frame.action = new HealActionDragon(room, frame, cursorTile, activeUnit, position);
+                        }
+                        if(activeUnit.shield){
+                           frame.action = new ShieldAction(room, frame, cursorTile, activeUnit, position);
                         }
                 break;
             default: System.out.println("miss");

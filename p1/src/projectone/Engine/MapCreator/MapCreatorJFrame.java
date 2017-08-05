@@ -6,7 +6,7 @@
 
 package projectone.Engine.MapCreator;
 
-import com.sun.glass.events.KeyEvent;
+import java.awt.event.KeyEvent;
 import java.awt.Dimension;
 import projectone.game.*;
 import java.awt.Graphics;

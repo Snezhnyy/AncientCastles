@@ -1,7 +1,7 @@
 23
 default 100 4 10 40 1 10
-warriorp1 100 5 20 55 1 0
-warriorp2 100 5 20 55 1 1
+warriorp1 100 5 20 55 1 0 shield
+warriorp2 100 5 20 55 1 1 shield
 archerp1 80 6 5 70 2 0
 archerp2 80 6 5 70 2 1
 elementalWaterp1 100 5 10 55 1 0 wE
