@@ -21,7 +21,7 @@ import projectone.game.UnitDescription;
  * @author Snowdrop
  */
 public class MoveAction extends GeneralAction {
-    Image moveTile;
+    Image moveTile, imoveDot, ifinish;
     UnitDescription activeUnit;
     Point position;
     boolean selected;
@@ -30,11 +30,15 @@ public class MoveAction extends GeneralAction {
     public MoveAction(){
         selected = true;
         moveTile = new ImageIcon("src" + File.separator + "projectone"+File.separator+"Image"+File.separator+"Cursor"+File.separator+"moveGP.png").getImage();
+        imoveDot = new ImageIcon("src" + File.separator + "projectone"+File.separator+"Image"+File.separator+"Cursor"+File.separator+"moveDot.png").getImage();
+        ifinish = new ImageIcon("src" + File.separator + "projectone"+File.separator+"Image"+File.separator+"Cursor"+File.separator+"moveFDot.png").getImage();
         moveMap = null;
     }
     public MoveAction(Room room, GameJFrame frame, Point cursorTile, UnitDescription ud, Point pos) {
         selected = true;
         moveTile = new ImageIcon("src" + File.separator + "projectone"+File.separator+"Image"+File.separator+"Cursor"+File.separator+"moveGP.png").getImage();
+        imoveDot = new ImageIcon("src" + File.separator + "projectone"+File.separator+"Image"+File.separator+"Cursor"+File.separator+"moveDot.png").getImage();
+        ifinish = new ImageIcon("src" + File.separator + "projectone"+File.separator+"Image"+File.separator+"Cursor"+File.separator+"moveFDot.png").getImage();
         activeUnit = ud;
         position = new Point(pos);
         moveMap = new int[room.units.length][room.units[0].length]; //initialization of array
@@ -99,6 +103,36 @@ public class MoveAction extends GeneralAction {
             for(int x = 0; x < moveMap.length; x++)
                 for(int y = 0; y < moveMap[0].length; y++)
                     if(moveMap[x][y] > 0 ) iTemp.getGraphics().drawImage(moveTile, x * 64 - scrPos.width, y * 64 - scrPos.height, frame);
+            if(moveMap[frame.getCursorTile().x][frame.getCursorTile().y] > 0 && room.units[frame.getCursorTile().x][frame.getCursorTile().y] == null){
+              Point dot = new Point(frame.getCursorTile());  
+              iTemp.getGraphics().drawImage(ifinish, dot.x * 64 - scrPos.width, dot.y * 64 - scrPos.height, frame);
+              while(moveMap[dot.x][dot.y] > 0){
+                  if(dot.x + 1 < moveMap.length)
+                    if(moveMap[dot.x][dot.y] > moveMap[dot.x + 1][dot.y] && moveMap[dot.x + 1][dot.y] > -1) { 
+                      dot.x++;
+                      if(moveMap[dot.x][dot.y] > 0) 
+                          iTemp.getGraphics().drawImage(imoveDot, dot.x * 64 - scrPos.width, dot.y * 64 - scrPos.height, frame);
+                  } 
+                  if(dot.x - 1 > 0)
+                    if(moveMap[dot.x][dot.y] > moveMap[dot.x - 1][dot.y] && moveMap[dot.x - 1][dot.y] > -1) {
+                      dot.x--;
+                      if(moveMap[dot.x][dot.y] > 0) 
+                          iTemp.getGraphics().drawImage(imoveDot, dot.x * 64 - scrPos.width, dot.y * 64 - scrPos.height, frame);
+                  } 
+                  if(dot.y + 1 < moveMap[0].length)
+                    if(moveMap[dot.x][dot.y] > moveMap[dot.x][dot.y + 1] && moveMap[dot.x][dot.y + 1] > -1) {
+                      dot.y++;
+                      if(moveMap[dot.x][dot.y] > 0) 
+                          iTemp.getGraphics().drawImage(imoveDot, dot.x * 64 - scrPos.width, dot.y * 64 - scrPos.height, frame);
+                  } 
+                  if(dot.y - 1 > 0)
+                    if(moveMap[dot.x][dot.y] > moveMap[dot.x][dot.y - 1] && moveMap[dot.x][dot.y - 1] > -1) {
+                      dot.y--;
+                      if(moveMap[dot.x][dot.y] > 0) 
+                          iTemp.getGraphics().drawImage(imoveDot, dot.x * 64 - scrPos.width, dot.y * 64 - scrPos.height, frame);
+                  } 
+              }
+            }
         }
     
     public static void macOn(Point cursorTile, Room room, GameJFrame frame, MouseEvent e){

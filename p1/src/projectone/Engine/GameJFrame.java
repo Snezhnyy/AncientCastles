@@ -113,7 +113,10 @@ public class GameJFrame extends javax.swing.JFrame {
     public Dimension getScreenPosition(){
         return screenPosition;
     }
-        
+    
+    public Point getCursorTile(){
+        return cursorTile;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
