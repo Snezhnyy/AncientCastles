@@ -45,6 +45,8 @@ public class TRendering2D {
                     if(room.units[x][y] != null) {
                         iTemp.getGraphics().drawImage(frame.units[room.units[x][y].getImageId()].getImage(), 64*x - screenPosition.width, 64*y - screenPosition.height, frame);
                         iTemp.getGraphics().drawString(String.valueOf(room.units[x][y].getHP()), 64 * x - screenPosition.width + 4, 64 * y - screenPosition.height + 58);
+                        if(!room.units[x][y].canAttack) 
+                            iTemp.getGraphics().drawImage(frame.iUnitEndTurn, 64*x - screenPosition.width, 64*y - screenPosition.height, frame);
                     }
       
       return iTemp;

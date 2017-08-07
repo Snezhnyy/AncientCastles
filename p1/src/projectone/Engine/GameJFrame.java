@@ -26,7 +26,7 @@ public class GameJFrame extends javax.swing.JFrame {
     protected Dimension screenPosition, mousePosition;
     protected Point cursorTile;
     protected Image cursor;
-    public Image grave;
+    public Image grave, iUnitEndTurn;
     public Tile[] tiles;
     public Unit[] units;
     protected javax.swing.Timer timer;
@@ -47,6 +47,7 @@ public class GameJFrame extends javax.swing.JFrame {
         action = new GeneralAction();
         cursor = new ImageIcon("src" + File.separator + "projectone" + File.separator + "Image" + File.separator + "Cursor" + File.separator + "glassPanel_projection.png").getImage();
         grave = new ImageIcon("src" + File.separator + "projectone" + File.separator+ "Image" + File.separator + "Unit" + File.separator + "grave.png").getImage();
+        iUnitEndTurn = new ImageIcon("src" + File.separator + "projectone" + File.separator+ "Image" + File.separator + "Cursor" + File.separator + "endMove.png").getImage();        
         ActionListener Tick = new ActionListener() {
             public void actionPerformed(ActionEvent e)
                 {
