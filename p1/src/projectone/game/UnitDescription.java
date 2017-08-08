@@ -57,15 +57,20 @@ public class UnitDescription implements Serializable{
     public UnitDescription(UnitDescription u){
         hp = u.hp;
         maxHp = u.maxHp;
+        maxHpBonus = u.maxHpBonus;
         speed = u.speed;
+        speedBonus = u.speedBonus;
         defence = u.defence;
+        defenceBonus = u.defenceBonus;
         attack = u.attack;
+        attackBonus = u.attackBonus;
         attackRange = u.attackRange;
+        attackRangeBonus = u.attackRangeBonus;
         imageId = u.imageId;
         owner = u.owner;
         exp = u.exp;
-        canMove = true;
-        canAttack = true;
+        canMove = u.canMove;
+        canAttack = u.canAttack;
         isWaterElemental = u.isWaterElemental;
         isRess = u.isRess;
         isHeal = u.isHeal;

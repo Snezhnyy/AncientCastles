@@ -49,7 +49,8 @@ public class UnitTestFrame extends GameJFrame {
         labelTurn = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        setForeground(new java.awt.Color(255, 255, 255));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);

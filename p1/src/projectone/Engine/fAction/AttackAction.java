@@ -105,6 +105,18 @@ public class AttackAction extends GeneralAction{
             for(int x = 0; x < attackMap.length; x++)
                 for(int y = 0; y < attackMap[0].length; y++)
                     if(attackMap[x][y] > 0) iTemp.getGraphics().drawImage(attackTile, x * 64 - scrPos.width, y * 64 - scrPos.height, frame);
+            if(room.units[frame.getCursorTile().x][frame.getCursorTile().y] != null && attackMap[frame.getCursorTile().x][frame.getCursorTile().y] > 0)
+                if(room.units[frame.getCursorTile().x][frame.getCursorTile().y].owner != activeUnit.owner){
+                    UnitDescription tempA = new UnitDescription(activeUnit);
+                    UnitDescription tempD = new UnitDescription(room.units[frame.getCursorTile().x][frame.getCursorTile().y]);
+                    if(activeUnit.isWolf) Perks.wolfInBattle(frame, room, room.units, position, frame.getCursorTile());
+                    else activeUnit.battle(frame, room, room.units, position, frame.getCursorTile());
+                    iTemp.getGraphics().drawString(String.valueOf(room.units[frame.getCursorTile().x][frame.getCursorTile().y].getHP() - tempD.getHP()), 64 * frame.getCursorTile().x - frame.getScreenPosition().width + 25, 64 * frame.getCursorTile().y - frame.getScreenPosition().height + 25);
+                    iTemp.getGraphics().drawString(String.valueOf(activeUnit.getHP() - tempA.getHP()), 64 * position.x - frame.getScreenPosition().width + 25, 64 * position.y - frame.getScreenPosition().height + 25);
+                    activeUnit = tempA; 
+                    room.units[position.x][position.y] = tempA;
+                    room.units[frame.getCursorTile().x][frame.getCursorTile().y] = new UnitDescription(tempD);
+                }
         }
     
     public static void macOn(Point cursorTile, Room room, GameJFrame frame, MouseEvent e){
