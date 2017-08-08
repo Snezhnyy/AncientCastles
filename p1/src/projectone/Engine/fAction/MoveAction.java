@@ -107,30 +107,30 @@ public class MoveAction extends GeneralAction {
               Point dot = new Point(frame.getCursorTile());  
               iTemp.getGraphics().drawImage(ifinish, dot.x * 64 - scrPos.width, dot.y * 64 - scrPos.height, frame);
               while(moveMap[dot.x][dot.y] > 0){
+                  Point temp = new Point(dot);
                   if(dot.x + 1 < moveMap.length)
                     if(moveMap[dot.x][dot.y] > moveMap[dot.x + 1][dot.y] && moveMap[dot.x + 1][dot.y] > -1) { 
-                      dot.x++;
-                      if(moveMap[dot.x][dot.y] > 0) 
-                          iTemp.getGraphics().drawImage(imoveDot, dot.x * 64 - scrPos.width, dot.y * 64 - scrPos.height, frame);
+                      if(moveMap[temp.x][temp.y] > moveMap[dot.x + 1][dot.y])
+                          temp = new Point(dot.x + 1, dot.y);
                   } 
                   if(dot.x - 1 > 0)
                     if(moveMap[dot.x][dot.y] > moveMap[dot.x - 1][dot.y] && moveMap[dot.x - 1][dot.y] > -1) {
-                      dot.x--;
-                      if(moveMap[dot.x][dot.y] > 0) 
-                          iTemp.getGraphics().drawImage(imoveDot, dot.x * 64 - scrPos.width, dot.y * 64 - scrPos.height, frame);
+                      if(moveMap[temp.x][temp.y] > moveMap[dot.x - 1][dot.y])
+                          temp = new Point(dot.x - 1, dot.y);
                   } 
                   if(dot.y + 1 < moveMap[0].length)
                     if(moveMap[dot.x][dot.y] > moveMap[dot.x][dot.y + 1] && moveMap[dot.x][dot.y + 1] > -1) {
-                      dot.y++;
-                      if(moveMap[dot.x][dot.y] > 0) 
-                          iTemp.getGraphics().drawImage(imoveDot, dot.x * 64 - scrPos.width, dot.y * 64 - scrPos.height, frame);
+                      if(moveMap[temp.x][temp.y] > moveMap[dot.x][dot.y + 1])
+                          temp = new Point(dot.x, dot.y + 1);
                   } 
                   if(dot.y - 1 > 0)
                     if(moveMap[dot.x][dot.y] > moveMap[dot.x][dot.y - 1] && moveMap[dot.x][dot.y - 1] > -1) {
-                      dot.y--;
-                      if(moveMap[dot.x][dot.y] > 0) 
+                      if(moveMap[temp.x][temp.y] > moveMap[dot.x][dot.y - 1])
+                          temp = new Point(dot.x, dot.y - 1);
+                  }
+                  dot = new Point(temp);
+                  if(moveMap[dot.x][dot.y] > 0) 
                           iTemp.getGraphics().drawImage(imoveDot, dot.x * 64 - scrPos.width, dot.y * 64 - scrPos.height, frame);
-                  } 
               }
             }
         }
