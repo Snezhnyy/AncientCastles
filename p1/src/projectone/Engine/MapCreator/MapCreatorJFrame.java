@@ -39,7 +39,12 @@ public class MapCreatorJFrame extends GameJFrame {
         if(canPaint) {
             Image iTempMap = TRendering2D.DrawMap(room, screenPosition, this);
             TRendering2D.DrawUnit(room, screenPosition, this, iTempMap);
-            //<editor-fold defaultstate="collapsed" desc="swing elements repaint">
+            iTempMap.getGraphics().drawImage(tiles[wTID()].getTileImage(), jLabelTileID.getX() + 10, jLabelTileID.getY( ), this);
+            iTempMap.getGraphics().drawImage(units[wUID()].getImage(), labelUID.getX() + 10, labelUID.getY( ), this);
+            iTempMap.getGraphics().drawImage(cursor, cursorTile.x * 64 - screenPosition.width, cursorTile.y * 64 - screenPosition.height, this);
+            g.drawImage(iTempMap, 0, 0, this);
+        }
+        //<editor-fold defaultstate="collapsed" desc="swing elements repaint">
            jLabelTileID.repaint();
         jLabelTilePos.repaint();
        jMenuBar1.repaint();
@@ -50,11 +55,6 @@ public class MapCreatorJFrame extends GameJFrame {
     jMenuItemSave.repaint();
         jTextFieldTileID.repaint();
         //</editor-fold>
-            iTempMap.getGraphics().drawImage(tiles[wTID()].getTileImage(), jLabelTileID.getX() + 10, jLabelTileID.getY( ), this);
-            iTempMap.getGraphics().drawImage(units[wUID()].getImage(), labelUID.getX() + 10, labelUID.getY( ), this);
-            iTempMap.getGraphics().drawImage(cursor, cursorTile.x * 64 - screenPosition.width, cursorTile.y * 64 - screenPosition.height, this);
-            g.drawImage(iTempMap, 0, 0, this);
-        }
     }   //рендер итоговой картинки
     
     /** This method is called from wthin the constructor to
@@ -129,7 +129,6 @@ public class MapCreatorJFrame extends GameJFrame {
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         setForeground(jLabelTileID.getForeground());
-        setPreferredSize(new java.awt.Dimension(800, 600));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 formMouseMoved(evt);

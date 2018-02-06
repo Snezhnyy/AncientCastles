@@ -34,8 +34,12 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="355" max="32767" attributes="0"/>
-              <Component id="labelTurn" min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="labelHelp" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="122" max="32767" attributes="0"/>
+              <Component id="labelPlayer" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+              <Component id="labelTurn" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -44,7 +48,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="270" max="32767" attributes="0"/>
-              <Component id="labelTurn" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="labelPlayer" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelHelp" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelTurn" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -54,6 +62,16 @@
     <Component class="java.awt.Label" name="labelTurn">
       <Properties>
         <Property name="text" type="java.lang.String" value="0"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Label" name="labelHelp">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Press any key to end your turn"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Label" name="labelPlayer">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Turn of player"/>
       </Properties>
     </Component>
   </SubComponents>

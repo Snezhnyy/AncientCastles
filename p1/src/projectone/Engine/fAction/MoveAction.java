@@ -55,6 +55,7 @@ public class MoveAction extends GeneralAction {
                          else tracingHelperMove(speed, x, y, room, frame); 
         }
 
+    @Override
     public void click(Room room, GameJFrame frame, Point cursorTile, MouseEvent e) {
         if(selected){
             moveAction(cursorTile, room);
@@ -91,7 +92,8 @@ public class MoveAction extends GeneralAction {
     }
     
     private void moveAction(Point cursorTile, Room room) {
-        if(moveMap[cursorTile.x][cursorTile.y] > 0 && activeUnit.canMove && room.units[cursorTile.x][cursorTile.y] == null){
+        if(moveMap[cursorTile.x][cursorTile.y] > 0 && activeUnit.canMove && room.units[cursorTile.x][cursorTile.y] == null)
+        {
             activeUnit.canMove = false;
             if(activeUnit.isCatapult) activeUnit.canAttack = false;
             room.units[position.x][position.y] = null;
